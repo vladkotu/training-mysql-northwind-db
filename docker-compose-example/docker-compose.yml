@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  db:
+    image: vladkotu/training-mysql-northwind-db
+    env_file:
+      - ./.dev.env
+    ports:
+      - ${DBPORT}:3306

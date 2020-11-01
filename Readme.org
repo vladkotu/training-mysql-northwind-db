@@ -1,0 +1,49 @@
+* MySql northwind training db
+   :PROPERTIES:
+   :header-args:sql:  :engine mysql
+   :header-args:sql+:  :dbhost 127.0.0.1
+   :header-args:sql+:  :dbport 3309
+   :header-args:sql+:  :dbuser root
+   :header-args:sql+:  :dbpassword rootpwd
+   :header-args:sql+:  :database northwind
+   :END:
+
+  Based on [[https://code.google.com/archive/p/northwindextended/][this project]]
+
+  Differences from original project:
+  - It's data only, no view table or stored procedures provided
+  - All table names are snake cased
+
+** Build/run instructions
+   Build image
+   #+begin_src sh
+     docker build -t train-northwind .
+   #+end_src
+
+   Run container
+   #+begin_src sh
+     docker run -d -p 3309:3306              \
+            --name train-northwind           \
+            -e MYSQL_ROOT_PASSWORD=rootpwd   \
+            vladkotu/training-mysql-northwind-db
+   #+end_src
+
+   
+   Connect throught cli
+   #+begin_src sh
+     mysql -h 127.0.0.1 -P 3309 -uroot -prootpwd
+   #+end_src
+
+   #+begin_src sql :exports both
+     SHOW DATABASES;
+   #+end_src
+
+   #+RESULTS:
+   | Database           |
+   |--------------------|
+   | information_schema |
+   | mysql              |
+   | northwind          |
+   | performance_schema |
+   | sys                |
+
