@@ -1,0 +1,6 @@
+* Example project environment
+  
+  How to use ~northwind~ mysql training db in project using ~docker-compose~
+  #+begin_src sh
+    docker-compose --env-file ./.dev.env up -d
+  #+end_src
